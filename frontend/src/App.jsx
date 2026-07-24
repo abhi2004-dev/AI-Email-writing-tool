@@ -9,8 +9,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Dynamically points to live Render backend or defaults to localhost for dev
-  const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+  // Directly pointed to your live backend URL
+  const API_BASE_URL = 'https://ai-email-writing-tool-backend.onrender.com'; // Replace this string with your actual Render/backend URL if different
 
   const handleGenerate = async () => {
     if (!prompt.trim()) {
