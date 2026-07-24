@@ -9,6 +9,9 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // Dynamically points to live Render backend or defaults to localhost for dev
+  const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+
   const handleGenerate = async () => {
     if (!prompt.trim()) {
       setError('Please enter a prompt or context for the email.');
@@ -20,7 +23,7 @@ function App() {
     setGeneratedEmail('');
 
     try {
-      const response = await fetch('http://localhost:8080/api/email/generate', {
+      const response = await fetch(`${API_BASE_URL}/api/email/generate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
