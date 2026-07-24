@@ -10,8 +10,7 @@ function App() {
   const [error, setError] = useState('');
 
   // Directly pointed to your live backend URL
-  const API_BASE_URL = 'https://ai-email-writer-backend-2oor.onrender.com'; // Replace this string with your actual Render/backend URL if different
-
+const API_BASE_URL = 'https://ai-email-writer-backend-2oor.onrender.com';
   const handleGenerate = async () => {
     if (!prompt.trim()) {
       setError('Please enter a prompt or context for the email.');
