@@ -8,18 +8,20 @@ function App() {
   const [generatedEmail, setGeneratedEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [copied, setCopied] = useState(false);
 
-  // Directly pointed to your live backend URL
-const API_BASE_URL = 'https://ai-email-writer-backend-2oor.onrender.com';
+  const API_BASE_URL = 'https://ai-email-writer-backend-2oor.onrender.com';
+
   const handleGenerate = async () => {
     if (!prompt.trim()) {
-      setError('Please enter a prompt or context for the email.');
+      setError('Please enter a prompt or context for your email.');
       return;
     }
 
     setLoading(true);
     setError('');
     setGeneratedEmail('');
+    setCopied(false);
 
     try {
       const response = await fetch(`${API_BASE_URL}/api/email/generate`, {
@@ -45,63 +47,83 @@ const API_BASE_URL = 'https://ai-email-writer-backend-2oor.onrender.com';
 
   const handleCopy = () => {
     navigator.clipboard.writeText(generatedEmail);
-    alert('Email copied to clipboard!');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
   };
 
   return (
-    <div className="app-container">
-      <h1 className="title">AI Email Writer</h1>
+    <div className="app-wrapper">
+      <div className="app-container">
+        <header className="app-header">
+          <div className="badge">✨ Powered by AI & Spring Boot</div>
+          <h1>AI Email Writer</h1>
+          <p>Draft professional, polished, and context-aware emails in seconds.</p>
+        </header>
 
-      <div className="form-group">
-        <label htmlFor="prompt">Email Context / Prompt</label>
-        <textarea
-          id="prompt"
-          rows="5"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Enter details about what you want to write (e.g., Decline meeting invitation politely due to scheduling conflict)..."
-        />
-      </div>
+        <div className="card">
+          <div className="form-group">
+            <label htmlFor="prompt">What should this email be about?</label>
+            <textarea
+              id="prompt"
+              rows="4"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="e.g., Decline meeting invitation politely due to scheduling conflict next Tuesday..."
+            />
+          </div>
 
-      <div className="controls-row">
-        <div className="control-item">
-          <label htmlFor="tone">Tone</label>
-          <select id="tone" value={tone} onChange={(e) => setTone(e.target.value)}>
-            <option value="Professional">Professional</option>
-            <option value="Casual">Casual</option>
-            <option value="Urgent">Urgent</option>
-          </select>
-        </div>
+          <div className="controls-grid">
+            <div className="control-item">
+              <label htmlFor="tone">Tone</label>
+              <select id="tone" value={tone} onChange={(e) => setTone(e.target.value)}>
+                <option value="Professional">Professional</option>
+                <option value="Casual">Casual</option>
+                <option value="Urgent">Urgent</option>
+                <option value="Friendly">Friendly</option>
+              </select>
+            </div>
 
-        <div className="control-item">
-          <label htmlFor="length">Length</label>
-          <select id="length" value={length} onChange={(e) => setLength(e.target.value)}>
-            <option value="Short">Short</option>
-            <option value="Medium">Medium</option>
-            <option value="Long">Long</option>
-          </select>
-        </div>
-      </div>
+            <div className="control-item">
+              <label htmlFor="length">Length</label>
+              <select id="length" value={length} onChange={(e) => setLength(e.target.value)}>
+                <option value="Short">Short</option>
+                <option value="Medium">Medium</option>
+                <option value="Long">Long</option>
+              </select>
+            </div>
+          </div>
 
-      <button
-        className="generate-btn"
-        onClick={handleGenerate}
-        disabled={loading}
-      >
-        {loading ? 'Generating...' : 'Generate Email'}
-      </button>
-
-      {error && <p style={{ color: 'red', marginTop: '15px' }}>{error}</p>}
-
-      {generatedEmail && (
-        <div className="output-section">
-          <h3>Generated Email:</h3>
-          <div className="output-box">{generatedEmail}</div>
-          <button className="copy-btn" onClick={handleCopy}>
-            Copy to Clipboard
+          <button
+            className={`generate-btn ${loading ? 'loading' : ''}`}
+            onClick={handleGenerate}
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <span className="spinner"></span> Crafting your email...
+              </>
+            ) : (
+              '⚡ Generate Email'
+            )}
           </button>
+
+          {error && <div className="error-banner">{error}</div>}
         </div>
-      )}
+
+        {generatedEmail && (
+          <div className="output-card">
+            <div className="output-header">
+              <h3>Generated Draft</h3>
+              <button className={`copy-btn ${copied ? 'copied' : ''}`} onClick={handleCopy}>
+                {copied ? '✓ Copied!' : '📋 Copy Text'}
+              </button>
+            </div>
+            <div className="output-box">
+              {generatedEmail}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
