@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: email-writer-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    restart: always
+
+  frontend:
+    build: ./frontend
+    container_name: email-writer-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always
