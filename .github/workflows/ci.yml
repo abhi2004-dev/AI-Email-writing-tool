@@ -31,12 +31,22 @@ jobs:
       with:
         node-version: '24'
 
-    - name: Build Frontend with Vite
+    - name: Install Frontend Dependencies
       run: |
         cd frontend
         npm install
-        npm run build
 
-    - name: Test Docker Compose Build
+    - name: Start Application via Docker Compose
       run: |
-        docker compose build
+        docker compose up -d --build
+        sleep 10
+
+    - name: Install Playwright Browsers and Dependencies
+      run: |
+        cd frontend
+        npx playwright install --with-deps
+
+    - name: Run Playwright E2E Tests
+      run: |
+        cd frontend
+        npx playwright test
