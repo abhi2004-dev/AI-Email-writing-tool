@@ -10,7 +10,7 @@ function App() {
   const [error, setError] = useState('');
 
   // Directly pointed to your live backend URL
-  const API_BASE_URL = 'https://ai-email-writing-tool-backend.onrender.com'; // Replace this string with your actual Render/backend URL if different
+  const API_BASE_URL = 'https://ai-email-writer-backend-2oor.onrender.com'; // Replace this string with your actual Render/backend URL if different
 
   const handleGenerate = async () => {
     if (!prompt.trim()) {
