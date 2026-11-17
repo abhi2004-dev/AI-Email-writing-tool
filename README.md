@@ -17,7 +17,7 @@
 
 # 🌟 Executive Summary
 
-This project bridges modern generative AI capabilities with enterprise-grade DevOps infrastructure. It features a responsive **React** frontend communicating with a high-performance **Spring Boot** backend integrated with **Google Gemini AI**.
+This project bridges modern generative AI capabilities with enterprise-grade DevOps infrastructure. It features a responsive **React** frontend designed with the **Mailmodo Bright SaaS** design system communicating with a high-performance **Spring Boot** backend integrated with **Google Gemini 3.5 Flash**.
 
 Beyond application logic, the codebase demonstrates comprehensive infrastructure automation, container orchestration, automated testing, and observability tooling—reflecting professional cloud-native engineering standards.
 
@@ -44,15 +44,15 @@ Beyond application logic, the codebase demonstrates comprehensive infrastructure
                               |
                               |
                    +----------v-----------+
-                   | Google Gemini API    |
+                   | Gemini 3.5 Flash API |
                    +----------------------+
 ```
 
 ## 📦 Application Layer
 
-- **Frontend:** React, Vite, Modern CSS
+- **Frontend:** React, Vite, Mailmodo Bright SaaS Design System
 - **Backend:** Java 17, Spring Boot
-- **AI Engine:** Google Gemini API
+- **AI Engine:** Google Gemini 3.5 Flash API
 
 ---
 
@@ -75,6 +75,7 @@ ai-email-writing-tool/
 │
 ├── frontend/
 │   ├── src/
+│   ├── tests/
 │   └── Dockerfile
 │
 ├── backend/
@@ -180,9 +181,9 @@ npm run dev
 
 | Category | Technologies |
 |----------|--------------|
-| Frontend | React, Vite, CSS |
+| Frontend | React, Vite, Mailmodo Bright SaaS CSS |
 | Backend | Java 17, Spring Boot |
-| AI | Google Gemini API |
+| AI | Google Gemini 3.5 Flash |
 | Build | Maven, npm |
 | Containerization | Docker, Docker Compose |
 | CI/CD | GitHub Actions |
@@ -196,20 +197,17 @@ npm run dev
 
 # ✨ Features
 
-- AI-powered email generation
-- Professional tone selection
-- Adjustable email length
-- Responsive UI
-- Spring Boot REST API
-- Gemini AI integration
-- Dockerized application
-- Kubernetes deployment
-- Terraform infrastructure
-- GitHub Actions CI/CD
-- Automated Playwright testing
-- Prometheus monitoring
-- Grafana dashboards
-- Cloud deployment on Vercel & Render
+- AI-powered email generation with Google Gemini 3.5 Flash
+- Mailmodo Bright SaaS modern design system
+- Contextual tone profiles and email length scopes
+- Quick prompt templates for instant composition
+- One-click clipboard copying with visual feedback
+- Spring Boot REST API with WebClient & Actuator Prometheus metrics
+- Dockerized container workflows with multi-stage builds
+- Kubernetes HA deployment manifests with secure secrets integration
+- Terraform infrastructure definitions
+- GitHub Actions CI/CD pipeline
+- Automated Playwright E2E testing
 
 ---
 
@@ -221,4 +219,4 @@ npm run dev
 
 Cloud Engineering • DevOps • Machine Learning • Full Stack Development
 
-Built with ❤️ using React, Spring Boot, Docker, Kubernetes, Terraform, and Google Gemini AI.
+Built with ❤️ using React, Spring Boot, Docker, Kubernetes, Terraform, and Google Gemini 3.5 Flash.

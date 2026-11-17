@@ -20,6 +20,13 @@ spec:
         imagePullPolicy: Never # Uses your locally built Docker image
         ports:
         - containerPort: 8080
+        env:
+        - name: GEMINI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: gemini-secret
+              key: GEMINI_API_KEY
+              optional: true
 ---
 apiVersion: v1
 kind: Service

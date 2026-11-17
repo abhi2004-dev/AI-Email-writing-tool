@@ -1,6 +1,8 @@
 # Secrets
 .env
 *.env
+*.pem
+aws/*.pem
 
 # Java / Maven / Spring Boot
 **/target/
@@ -16,6 +18,7 @@
 # OS Files
 Thumbs.db
 .DS_Store
+
 # Terraform local files
 terraform/.terraform/
 terraform/terraform.tfstate

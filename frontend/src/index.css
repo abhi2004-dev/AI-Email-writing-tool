@@ -1,14 +1,45 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f4f6f9;
-  color: #333;
+:root {
+  --color-primary: #5A45FE;
+  --color-primary-60: #7B6BFF;
+  --color-primary-20: #DCD7FF;
+  --color-secondary: #101043;
+  --color-tertiary: #E7E7E7;
+  --color-neutral: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #F8FAFF;
+  --color-on-surface: #101043;
+  --color-muted: #5B5E7A;
+  --color-border: #E5ECF3;
+  --color-border-soft: #F0F3F8;
+  --color-success: #21C27A;
+  --color-error: #E5484D;
+
+  --rounded-none: 0px;
+  --rounded-sm: 4px;
+  --rounded-md: 8px;
+  --rounded-lg: 9px;
+  --rounded-xl: 16px;
+  --rounded-full: 9999px;
+
+  --spacing-xs: 10px;
+  --spacing-sm: 20px;
+  --spacing-md: 30px;
+  --spacing-lg: 60px;
+  --spacing-xl: 84px;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
