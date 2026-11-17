@@ -130,12 +130,14 @@ function App() {
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState('workflow'); // 'workflow' | 'tech' | 'devops'
 
-  // Dynamic API Base URL: Defaults to localhost during local dev, and Render backend in production
-  const API_BASE_URL =
+  // Dynamic API Base URL: Defaults to localhost during local dev, and Render backend in production.
+  // Strips any trailing slash to prevent double-slash concatenation errors like '//api/email/generate'.
+  const rawBaseUrl =
     import.meta.env.VITE_API_BASE_URL ||
     (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
       ? 'http://localhost:8080'
       : 'https://ai-email-writer-backend-2oor.onrender.com');
+  const API_BASE_URL = String(rawBaseUrl).replace(/\/+$/, '');
 
   const handleGenerate = async () => {
     if (!prompt.trim()) {
